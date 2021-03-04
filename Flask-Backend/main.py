@@ -23,6 +23,9 @@ class Items(Resource):
         mysql.get_db().commit()
         placer.close()
         return "success"
+
+    def deleteId(self, itemID):
+        
         
 class Users(Resource):
 
@@ -80,6 +83,7 @@ class Users(Resource):
 
 #this is the route for the user things in the database the methods are defined in the class called Users above
 api.add_resource(Users, "/user/<string:username>")
+api.add_resource(items, "/items/<int:itemID>")
 
 #Confiq Mysql
 app.config["MYSQL_DATABASE_HOST"] = "phtfaw4p6a970uc0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
