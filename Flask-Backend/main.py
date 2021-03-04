@@ -7,7 +7,23 @@ mysql = MySQL()
 app = Flask(__name__)
 api = Api(app)
 
+class Items(Resource):
+    def post(self, userId):
+        placer = mysql.get_db().cursor()
+        _userId = int(userId)
+        item_name = str(request.json['item_name'])
+        item_description = str(request.json['item_description'])
+        item_link = str(request.json['item_list'])
+        item_price = int(request.json['item_price'])
 
+        sql = ( "INSERT INTO items (userId, itemName, itemDescription, itemLink, itemPrice)"
+                " VALUES (%s, %s, %s, %s, %s)")
+        params = [_userId, item_name, item_description, item_link, item_price]
+        placer.execute(sql, params)
+        mysql.get_db().commit()
+        placer.close()
+        return "success"
+        
 class Users(Resource):
 
     #this is the api endpoint for getting a user from the database
