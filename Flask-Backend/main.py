@@ -8,6 +8,19 @@ app = Flask(__name__)
 api = Api(app)
 
 class Items(Resource):
+
+    def get(self, itemID):
+        placer = mysql.get_db.cursor()
+        sql = ("SELECT * FROM items WHERE itemID LIKE (%s)")
+        result = placer.execute(sql, [itemID])
+        if result > 0:
+            data = placer.fetchall
+        else : data = {
+            "msg": "no items"
+        }
+        placer.close()
+        return data
+
     def post(self, userId):
         placer = mysql.get_db().cursor()
         _userId = int(userId)
@@ -23,8 +36,6 @@ class Items(Resource):
         mysql.get_db().commit()
         placer.close()
         return "success"
-
-    def deleteId(self, itemID):
         
         
 class Users(Resource):
