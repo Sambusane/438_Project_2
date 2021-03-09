@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import Home from './Home';
 import Navbar from './Navbar';
 import Test from './Test';
+import Login from "./Login";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
@@ -17,6 +17,9 @@ function App() {
           </Route>
           <Route path="/test">
             <Test />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
         </Switch>
       </div>
