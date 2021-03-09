@@ -36,6 +36,7 @@ class Login(Resource):
                 data = {
                     "username": session["username"],
                     "loggedIn": session["loggedIn"],
+                    "userId": data[0]["id"],
                     "msg": "Successfully logged in"
                 }
             else:

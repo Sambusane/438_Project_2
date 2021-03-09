@@ -10,6 +10,7 @@ class Login extends React.Component {
         this.state = {
             username: '',
             password: '',
+            userId: '',
             isLoggedIn: null,
             user: []
         };
@@ -57,6 +58,7 @@ class Login extends React.Component {
         }else{
             this.setState({username: this.state.user.username})
             this.setState({isLoggedIn: this.state.user.loggedIn})
+            this.setState({userId: this.state.user.userId})
             this.setState({password: ''})
             alert("Successfully logged in")
         }
