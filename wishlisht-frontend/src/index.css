@@ -89,3 +89,21 @@ code {
   transition: background-color 0.3s ease-in,
               color 0.3s ease-in;
 }
+.login {
+   height: 100vh;
+  background-image: url("https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-size: cover;
+  margin-bottom: 30px;
+}
+.subLog {
+  display: grid;
+  justify-content: left;
+}
+.login h1 {
+  color: white;
+}
