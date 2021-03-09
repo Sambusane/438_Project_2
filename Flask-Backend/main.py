@@ -53,25 +53,25 @@ class Login(Resource):
 
 class Items(Resource):
 
-    def get(self, itemID):
-        placer = mysql.get_db.cursor()
-        sql = ("SELECT * FROM items WHERE itemID LIKE (%s)")
-        result = placer.execute(sql, [itemID])
+    def get(self, userID):
+        placer = mysql.get_db().cursor()
+        sql = ("SELECT * FROM items WHERE userID LIKE (%s)")
+        result = placer.execute(sql, [userID])
         if result > 0:
-            data = placer.fetchall
+            data = placer.fetchall()
         else : data = {
             "msg": "no items"
         }
         placer.close()
         return data
 
-    def post(self, userId):
+    def post(self, userID):
         placer = mysql.get_db().cursor()
-        _userId = int(userId)
-        item_name = str(request.json['item_name'])
-        item_description = str(request.json['item_description'])
-        item_link = str(request.json['item_list'])
-        item_price = int(request.json['item_price'])
+        _userId = int(userID)
+        item_name = str(request.json['itemName'])
+        item_description = str(request.json['itemDescription'])
+        item_link = str(request.json['itemLink'])
+        item_price = float(request.json['itemPrice'])
 
         sql = ("INSERT INTO items (userId, itemName, itemDescription, itemLink, itemPrice)"
                " VALUES (%s, %s, %s, %s, %s)")
@@ -140,7 +140,7 @@ class Users(Resource):
 
 # this is the route for the user things in the database the methods are defined in the class called Users above
 api.add_resource(Users, "/user/<string:username>")
-api.add_resource(Items, "/items/<int:itemID>")
+api.add_resource(Items, "/items/<int:userID>")
 api.add_resource(Login, "/login")
 # Confiq Mysql
 app.config["MYSQL_DATABASE_HOST"] = "phtfaw4p6a970uc0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
