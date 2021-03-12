@@ -11,7 +11,21 @@ mysql = MySQL()
 app = Flask(__name__)
 app.secret_key = 'this is the secret key'
 api = Api(app)
-cors = CORS(app, resources ={r"/login/": {"origins": "*"}})
+cors = CORS(app, resources ={r"/login/": {"origins": "*"}}) 
+cors = CORS(app, resource = {r"/signup/": {"origins": "*"}})
+class Signup(Resource):
+    def post(self):
+        username = request.json['username']
+        password = request.json['password']
+        email = request.json['email']
+        firstName = request.json['firstName']
+        lastName = request.json['lastName']
+
+        print(username + " pass: " + password + " email: " + email + " first name: " + firstName + " last name: " + lastName)
+
+        data = Users.post(self, username)
+
+        return data
 
 class Login(Resource):
     # this function takes the username and password in a post method and then checks the db for the user and if found
@@ -105,9 +119,9 @@ class Users(Resource):
     def post(self, username):
         placer = mysql.get_db().cursor()
         _username = str(username)
-        first_name = str(request.json['first_name'])
+        first_name = str(request.json['firstName'])
         email = str(request.json['email'])
-        last_name = str(request.json['last_name'])
+        last_name = str(request.json['lastName'])
         password = str(request.json['password'])
 
         sql = ("INSERT INTO users (username, email, firstname, lastname, password)"
@@ -143,6 +157,7 @@ class Users(Resource):
 api.add_resource(Users, "/user/<string:username>")
 api.add_resource(Items, "/items/<int:userID>")
 api.add_resource(Login, "/login")
+api.add_resource(Signup, "/signup")
 # Confiq Mysql
 app.config["MYSQL_DATABASE_HOST"] = "phtfaw4p6a970uc0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
 app.config["MYSQL_DATABASE_USER"] = "tv46rwbi8adoj2md"
