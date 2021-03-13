@@ -4,23 +4,44 @@ import Navbar from './Navbar';
 import Test from './Test';
 import Login from "./Login";
 import Signup from "./Signup";
+import React, { useState } from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 
 function App() {
+
+  const [username,setUsername] = useState(() => {
+    return "";
+  })
+  const [loggedIn, setLoggedIn] = useState(() => {
+    return false;
+  })
+  const [userId, setUserId] = useState(() => {
+    return "";
+  })
+  function setTheData(x,y,z){
+    setUsername(x);
+    setLoggedIn(y);
+    setUserId(z);
+  }
   return (
     <Router>
     <div className="App">
-      <Navbar />
+      <Navbar uName = {username}/>
       <div className="content">
         <Switch>
           <Route exact path="/">
-            <Home />
+            {loggedIn ? <Redirect to="/test" /> : <Home />}
           </Route>
           <Route path="/test">
             <Test />
           </Route>
           <Route path="/login">
-            <Login />
+            <Login
+            name = {username}
+            id = {userId}
+            log = {loggedIn}
+            dataSetter = { setTheData.bind(this)}/>
           </Route>
           <Route path="/signup">
             <Signup />
