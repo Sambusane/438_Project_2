@@ -33,9 +33,11 @@ class Login(Resource):
             if data[0]["password"] == password:
                 session["loggedIn"] = True
                 session["username"] = data[0]["username"]
+                session["userId"] = data[0]["id"]
                 data = {
                     "username": session["username"],
                     "loggedIn": session["loggedIn"],
+                    "userId": data[0]["id"],
                     "msg": "Successfully logged in"
                 }
             else:
@@ -53,10 +55,10 @@ class Login(Resource):
 
 class Items(Resource):
 
-    def get(self, itemID):
+    def get(self, userId = session["userId"]):
         placer = mysql.get_db.cursor()
-        sql = ("SELECT * FROM items WHERE itemID LIKE (%s)")
-        result = placer.execute(sql, [itemID])
+        sql = ("SELECT * FROM items WHERE userId LIKE (%s)")
+        result = placer.execute(sql, [userId])
         if result > 0:
             data = placer.fetchall
         else : data = {
@@ -140,7 +142,7 @@ class Users(Resource):
 
 # this is the route for the user things in the database the methods are defined in the class called Users above
 api.add_resource(Users, "/user/<string:username>")
-api.add_resource(Items, "/items/<int:itemID>")
+api.add_resource(Items, "/items/<int:userId>")
 api.add_resource(Login, "/login")
 # Confiq Mysql
 app.config["MYSQL_DATABASE_HOST"] = "phtfaw4p6a970uc0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
