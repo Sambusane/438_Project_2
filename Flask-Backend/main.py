@@ -6,6 +6,7 @@ from flask_cors import CORS, cross_origin
 import MySQLdb as mdb
 import MySQLdb.cursors as mbd2
 import json
+import re
 
 mysql = MySQL()
 app = Flask(__name__)
@@ -23,7 +24,37 @@ class Signup(Resource):
 
         print(username + " pass: " + password + " email: " + email + " first name: " + firstName + " last name: " + lastName)
 
-        data = Users.post(self, username)
+        data = Users.get(self, username)
+        empty = {
+            "msg": "no users"
+        }
+        if data == empty:
+            if len(password) < 6:
+                data = {
+                    "msg": "password is too short"
+                }
+            elif re.search('[0-9]', password) is None:
+                data = {                  
+                    "msg": "password needs number"
+                }
+            elif re.search('[A-Z]', password) is None:
+               data = {           
+                    "msg": "password needs capital letter"
+               }
+
+            elif re.search('[!"#$%&]', password) is None:
+                data = {
+                    "msg": "password needs a special character"
+                }
+            else:
+                data = Users.post(self,username)
+                data = {
+                    "msg": "you are now registered"
+                }
+        else:
+            data = {
+                "msg": "duplicate username"
+            }
 
         return data
 

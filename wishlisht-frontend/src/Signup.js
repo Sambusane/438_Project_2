@@ -63,6 +63,21 @@ class Signup extends React.Component {
                     console.log(error)
                 })
         }
+        verifyData() {
+            if (this.state.user.msg === "duplicate username") {
+                alert("Username is already in use.")
+            } else if (this.state.user.msg === "password is too short") {
+                alert("Password needs to be at least 6 characters long.")
+            } else if (this.state.user.msg === "password needs number.") {
+                alert("Password needs to include a number.")
+            } else if (this.state.user.msg === "password needs capital letter") {
+                alert("Password needs to include a capital letter.")
+            } else if (this.state.user.msg === "password needs a special character") {
+                alert("Password needs to include a special character.")
+            } else {
+                alert("You are now registered.")
+            }
+        }
 
         render() {
             return (
