@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Test from './Test';
 import Login from "./Login";
 import Signup from "./Signup";
+import ItemList from "./ItemList"
 import React, { useState } from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Redirect } from "react-router-dom";
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <Signup />
+          </Route>
+          <Route path="/itemlist">
+            <ItemList />
           </Route>
         </Switch>
       </div>
