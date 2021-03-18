@@ -3,7 +3,6 @@ from flask import Flask, session, request
 from flaskext.mysql import MySQL
 from flask_restful import Api, Resource
 from flask_cors import CORS, cross_origin
-import json
 import re
 
 mysql = MySQL()
