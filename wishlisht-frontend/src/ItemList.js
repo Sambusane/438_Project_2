@@ -17,11 +17,17 @@ class itemList extends React.Component{
 
     render() {
         return(
-            //this.state.data
-            <h1>Hello World</h1>
+            <ul>
+                {this.state(item => {
+                    return <li>{item.data}</li>
+                })}
+            </ul>
+
         )
     }
 
 }
+
+export default itemList;
 
 
