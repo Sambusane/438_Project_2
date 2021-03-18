@@ -3,8 +3,6 @@ from flask import Flask, session, request
 from flaskext.mysql import MySQL
 from flask_restful import Api, Resource
 from flask_cors import CORS, cross_origin
-import MySQLdb as mdb
-import MySQLdb.cursors as mbd2
 import json
 import re
 
