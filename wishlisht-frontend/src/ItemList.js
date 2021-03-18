@@ -1,15 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import "./App.css"
+import axios from "axios";
 
-function menu(items){
-    const list = items.item();
+axios.defaults.headers.post['Content-Type'] = "application/json"
 
-    const updatedList = list.map((listItems) => {
-        return <li>{listItems}</li>
-    });
+class itemList extends React.Component{
+    constructor(props) {
+        super(props);
 
-    return(
-        <u1>{updatedList}</u1>
-    );
+        const url = "/items"
+        this.state = {
+        data : axios.get(url)
+        }
+
+    }
+
+    render() {
+        return(
+            <ul>
+                {this.state(item => {
+                    return <li>{item.data}</li>
+                })}
+            </ul>
+
+        )
+    }
 
 }
+
+export default itemList;
+
+
