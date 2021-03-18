@@ -8,10 +8,12 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            username: this.props.name,
             password: '',
-            isLoggedIn: null,
-            user: []
+            userId: this.props.id,
+            loggedIn: this.props.log,
+            user: [],
+            dSetter: this.props.dataSetter
         };
         //this is connecting the fields to the values in the state.
         this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -56,8 +58,10 @@ class Login extends React.Component {
             alert("Incorrect Password")
         }else{
             this.setState({username: this.state.user.username})
-            this.setState({isLoggedIn: this.state.user.loggedIn})
+            this.setState({loggedIn: this.state.user.loggedIn})
+            this.setState({userId: this.state.user.userId})
             this.setState({password: ''})
+            this.state.dSetter(this.state.username,this.state.loggedIn,this.state.userId)
             alert("Successfully logged in")
         }
     }
