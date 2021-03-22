@@ -4,5 +4,11 @@
     ],
     "scripts": {
       "heroku-postbuild": "cd wishlisht-front && npm install && npm run build"
-    }
+    },
+        "name": "main",
+        "description": "wishlist",
+        "version": "1.0.0",
+        "engines": {
+          "node": "14.16.0"
+        }
   }
