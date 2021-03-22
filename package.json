@@ -5,19 +5,19 @@
     "scripts": {
       "heroku-postbuild": "cd wishlisht-frontend && yarn install && yarn start"
     },
-        "name": "main",
+        "name": "node",
         "description": "wishlist",
         "version": "1.0.0",
         "engines": {
           "node": "14.16.0"
         },
-            "name": "main",
+            "name": "npm",
             "description": "wishlist",
             "version": "0.0.1",
             "engines": {
               "npm": "6.14.11"
         },
-            "name": "main",
+            "name": "yarn",
             "description": "a really cool app",
             "version": "1.0.0",
             "engines": {
