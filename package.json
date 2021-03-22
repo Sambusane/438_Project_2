@@ -3,6 +3,6 @@
       "client/node_modules"
     ],
     "scripts": {
-      "heroku-postbuild": "cd wishlish-front && npm install && npm run build"
+      "heroku-postbuild": "cd wishlisht-front && npm install && npm run build"
     }
   }
