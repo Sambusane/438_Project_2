@@ -3,7 +3,7 @@
       "client/node_modules"
     ],
     "scripts": {
-      "heroku-postbuild": "cd wishlisht-frontend && npm install && npm run build"
+      "heroku-postbuild": "cd wishlisht-frontend && yarn install && yarn start"
     },
         "name": "main",
         "description": "wishlist",
@@ -17,7 +17,7 @@
             "engines": {
               "npm": "6.14.11"
         },
-            "name": "myapp",
+            "name": "main",
             "description": "a really cool app",
             "version": "1.0.0",
             "engines": {
