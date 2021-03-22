@@ -10,5 +10,17 @@
         "version": "1.0.0",
         "engines": {
           "node": "14.16.0"
-        }
+        },
+            "name": "main",
+            "description": "wishlist",
+            "version": "0.0.1",
+            "engines": {
+              "npm": "6.14.11"
+        },
+            "name": "myapp",
+            "description": "a really cool app",
+            "version": "1.0.0",
+            "engines": {
+              "yarn": "1.22.10"
+          }
   }
