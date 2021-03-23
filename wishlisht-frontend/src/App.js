@@ -43,7 +43,7 @@ function App() {
       <div className="content">
         <Switch>
           <Route exact path="/">
-            {loggedIn ? <Redirect to="/test" /> : <Home />}
+            {loggedIn ? <Redirect to="/itemList" /> : <Home />}
           </Route>
           <Route path="/test">
             <Test />
