@@ -176,6 +176,14 @@ input[type=submit]:hover {
   color: white;
   display: flex;
 }
+.items {
+  color: black;
+}
+
+.itemLists{
+
+}
+
 .searchItem {
   display: flex;
   justify-content: center;
@@ -217,3 +225,4 @@ input[type=submit]:hover {
   color: white;
 
 }
+

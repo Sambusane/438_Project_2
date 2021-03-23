@@ -59,7 +59,9 @@ function App() {
             <Signup />
           </Route>
           <Route path="/itemlist">
-            <ItemList />
+            <ItemList
+            id = {userId}
+            />
           </Route>
           <Route path="/search">
             <Search />
