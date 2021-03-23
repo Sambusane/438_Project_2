@@ -28,6 +28,7 @@ class Search extends React.Component{
     async handleSubmit(event){
         event.preventDefault();
         const url = "/search/"+this.state.searchname;
+        this.forceUpdate()
         axios.get(url)
             .then(res =>{
                 this.setState({data: res.data})
@@ -36,7 +37,7 @@ class Search extends React.Component{
             .catch(error =>{
                 console.log(error)
             })
-        this.forceUpdate()
+        
     }
 
     checkData() {
@@ -56,24 +57,27 @@ class Search extends React.Component{
         const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
         if (newWindow) newWindow.opener = null
         this.setState({items: this.state.items.filter((item)=>item.id!==id)})
+        this.forceUpdate()
         const url2 = "/items/"+id
         const url3 = "/items/"+uid
         axios.delete(url2)
             .then(response => {
                 console.log(response.data)
+                axios.get(url3)
+                    .then(res =>{
+                        this.setState({data: res.data})
+                        this.checkData()
+                    })
+                    .catch(error =>{
+                        console.log(error)
+                    })
             })
             .catch(error => {
                 console.log(error)
             })
-        axios.get(url3)
-            .then(res =>{
-                this.setState({data: res.data})
-                this.checkData()
-            })
-            .catch(error =>{
-                console.log(error)
-            })
-        this.forceUpdate()
+        
+        
+        
 
     }
 

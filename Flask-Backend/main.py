@@ -153,7 +153,7 @@ class Items(Resource):
         mysql.get_db().commit()
         placer.close()
         return "success"
-        
+
     def delete(self, userID):
         placer = mysql.get_db().cursor()
         sql = ("DELETE FROM items WHERE id LIKE (%s)")
@@ -239,9 +239,6 @@ mysql.init_app(app)
 db = mysql.connect()
 
 
-@app.route("/")
-def index():
-    return 'Index'
 
 
 if __name__ == '__main__':
