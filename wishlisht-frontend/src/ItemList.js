@@ -11,12 +11,13 @@ class itemList extends React.Component{
 
         
         this.state = {
-        data : []
+        data : [],
+            id : this.props.id
         }
 
     }
     componentDidMount(){
-        const url = "/items/6";
+        const url = "/items/" + this.state.id;
         axios.get(url)
             .then(response => this.setState({ data:response.data}))
             .catch(error =>{
@@ -27,12 +28,12 @@ class itemList extends React.Component{
 
     render() {
         return(
-            <ul>
+            <div className="itemLists"><ul>
                 {this.state.data.map(item => {
-                    //<Item item.itemName />
-                    return <li>{item.itemName}</li>
+                    return <li><Item name = {item.itemName} price = {item.itemPrice}/></li>
                 })}
             </ul>
+            </div>
 
         )
     }
