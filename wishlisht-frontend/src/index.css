@@ -176,7 +176,6 @@ input[type=submit]:hover {
   color: white;
   display: flex;
 }
-
 .items {
   color: black;
 }
@@ -184,3 +183,46 @@ input[type=submit]:hover {
 .itemLists{
 
 }
+
+.searchItem {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 25px;
+  border: 1px solid #505050;
+  padding: 20px;
+  width: 325px;
+  height: 30%;
+  align-items: center;
+}
+.searchItem h4{
+  margin-right:auto;
+}
+.searchItem h5{
+  margin-right:auto;
+  margin-left: auto;
+}
+.Results {
+  
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.Search {
+  height: 100vh;
+  background-image: url("https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-size: cover;
+  margin-bottom: 30px;
+  
+}
+.Searchform h1{
+  color: white;
+
+}
+
