@@ -181,7 +181,8 @@ input[type=submit]:hover {
 }
 
 .itemLists{
-
+  list-style-type: circle;
+  padding: 5px;
 }
 
 .searchItem {
