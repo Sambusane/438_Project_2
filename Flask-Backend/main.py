@@ -11,6 +11,19 @@ app.secret_key = 'this is the secret key'
 api = Api(app)
 cors = CORS(app, resources ={r"/login/": {"origins": "*"}}) 
 cors = CORS(app, resource = {r"/signup/": {"origins": "*"}})
+
+class Search(Resource):
+    def get(self,username):
+        res = Users.get(self,username)
+        empty = {
+            "msg": "no users"
+        }
+        if res != empty:
+            res = Items.get(self,res[0]["id"])
+        return res
+
+            
+
 class Signup(Resource):
     def post(self):
         username = request.json['username']
@@ -92,6 +105,23 @@ class Login(Resource):
         print(session["username"])
         print(session["loggedIn"])
         return data
+    
+    # this function checks if the session for a logged in user and passes it back to the front end.
+    def get(self):
+        if session.get('loggedIn') == True:
+            res = Users.get(self,session["username"])
+            data = {
+                "username" : session["username"],
+                "loggedIn": session["loggedIn"],
+                "userId": res[0]["id"],
+            }
+        else:
+            data = {
+                "username" : "",
+                "loggedIn": False,
+                "userId": "",
+            }
+        return data
 
 
 class Items(Resource):
@@ -123,9 +153,18 @@ class Items(Resource):
         mysql.get_db().commit()
         placer.close()
         return "success"
-        # def deleteId(self, itemID):
+
+    def delete(self, userID):
+        placer = mysql.get_db().cursor()
+        sql = ("DELETE FROM items WHERE id LIKE (%s)")
+        result = placer.execute(sql,[userID])
+        mysql.get_db().commit()
+        placer.close()
+        return {"msg":"item deleted"}
+
         
 class Users(Resource):
+    
 
     # this is the api endpoint for getting a user from the database
     def get(self, username):
@@ -186,6 +225,8 @@ api.add_resource(Users, "/user/<string:username>")
 api.add_resource(Items, "/items/<int:userID>")
 api.add_resource(Login, "/login")
 api.add_resource(Signup, "/signup")
+api.add_resource(Search, "/search/<string:username>")
+
 # Confiq Mysql
 app.config["MYSQL_DATABASE_HOST"] = "phtfaw4p6a970uc0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
 app.config["MYSQL_DATABASE_USER"] = "tv46rwbi8adoj2md"
@@ -198,9 +239,6 @@ mysql.init_app(app)
 db = mysql.connect()
 
 
-@app.route("/")
-def index():
-    return 'Index'
 
 
 if __name__ == '__main__':
