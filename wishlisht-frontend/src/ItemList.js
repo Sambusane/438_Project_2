@@ -11,29 +11,59 @@ class itemList extends React.Component{
 
         
         this.state = {
-        data : [],
+            isLoading: true,
+            data : [],
             id : this.props.id
         }
+        
 
     }
-    componentDidMount(){
-        const url = "/items/" + this.state.id;
-        axios.get(url)
-            .then(response => this.setState({ data:response.data}))
-            .catch(error =>{
-                console.log(error)
-            })
-        
+    async componentDidMount(){
+        if(this.state.isLoading===true){
+            console.log("I mounted")
+            const url = "/items/" + this.props.id;
+            axios.get(url)
+                .then(response => {
+                    this.setState({data:response.data})
+                    this.setState({isLoading:false})
+                })
+                .catch(error =>{
+                    console.log(error)
+                })
+        }
+            
     }
+    async componentDidUpdate(){
+        if(this.state.isLoading===true){
+            console.log("I mounted")
+            const url = "/items/" + this.props.id;
+            axios.get(url)
+                .then(response => {
+                    this.setState({data:response.data})
+                    this.setState({isLoading:false})
+                })
+                .catch(error =>{
+                    console.log(error)
+                })
+        }
+            
+    }
+    
 
     render() {
         return(
+            
+            this.state.isLoading ?(
+                
+                <div>Loading...</div>
+            )
+            :(
             <div className="itemLists"><ul>
                 {this.state.data.map(item => {
-                    return <li><Item name = {item.itemName} price = {item.itemPrice}/></li>
+                    return <li><Item key = {item.id} name = {item.itemName} price = {item.itemPrice}/></li>
                 })}
             </ul>
-            </div>
+            </div>)
 
         )
     }
