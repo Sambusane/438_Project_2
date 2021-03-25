@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css"
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 axios.defaults.headers.post['Content-Type'] = "application/json"
 
@@ -61,7 +62,8 @@ class Login extends React.Component {
             this.setState({loggedIn: this.state.user.loggedIn})
             this.setState({userId: this.state.user.userId})
             this.setState({password: ''})
-            this.state.dSetter(this.state.username,this.state.loggedIn,this.state.userId)
+            this.state.dSetter(this.state.username,this.state.loggedIn,this.state.user.userId)
+            
             alert("Successfully logged in")
         }
     }
@@ -81,6 +83,7 @@ class Login extends React.Component {
                         <br/> <br/>
                         <input type={"submit"} value="Submit"/>
                     </form>
+                    {this.state.loggedIn === true? <Redirect push to={{pathname:"/itemList",state: {id: this.state.user.userId}}}/>: null}
                 </div>
 
 

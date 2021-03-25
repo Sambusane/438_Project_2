@@ -153,7 +153,7 @@ class Items(Resource):
         mysql.get_db().commit()
         placer.close()
         return "success"
-        
+
     def delete(self, userID):
         placer = mysql.get_db().cursor()
         sql = ("DELETE FROM items WHERE id LIKE (%s)")
@@ -219,6 +219,11 @@ class Users(Resource):
 
         return data
 
+class Logout(Resource):
+    def get(self):
+        session['loggedIn'] = False
+        session['username'] = ""
+        return {"msg":"success"}
 
 # this is the route for the user things in the database the methods are defined in the class called Users above
 api.add_resource(Users, "/user/<string:username>")
@@ -226,6 +231,7 @@ api.add_resource(Items, "/items/<int:userID>")
 api.add_resource(Login, "/login")
 api.add_resource(Signup, "/signup")
 api.add_resource(Search, "/search/<string:username>")
+api.add_resource(Logout, "/logout")
 
 # Confiq Mysql
 app.config["MYSQL_DATABASE_HOST"] = "phtfaw4p6a970uc0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
@@ -239,9 +245,6 @@ mysql.init_app(app)
 db = mysql.connect()
 
 
-@app.route("/")
-def index():
-    return 'Index'
 
 
 if __name__ == '__main__':
