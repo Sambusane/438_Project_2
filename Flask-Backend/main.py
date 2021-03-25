@@ -219,6 +219,11 @@ class Users(Resource):
 
         return data
 
+class Logout(Resource):
+    def get(self):
+        session['loggedIn'] = False
+        session['username'] = ""
+        return {"msg":"success"}
 
 # this is the route for the user things in the database the methods are defined in the class called Users above
 api.add_resource(Users, "/user/<string:username>")
@@ -226,6 +231,7 @@ api.add_resource(Items, "/items/<int:userID>")
 api.add_resource(Login, "/login")
 api.add_resource(Signup, "/signup")
 api.add_resource(Search, "/search/<string:username>")
+api.add_resource(Logout, "/logout")
 
 # Confiq Mysql
 app.config["MYSQL_DATABASE_HOST"] = "phtfaw4p6a970uc0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
