@@ -12,16 +12,7 @@ import { Redirect } from "react-router-dom";
 import axios from 'axios';
 
 function App() {
-  useEffect(() => {
-    axios.get("/login")
-      .then(response => {
-        setUsername(response.data.username)
-        setLoggedIn(response.data.loggedIn)
-        setUserId(response.data.userId)
-      })
-
-  })
-
+  
   const [username,setUsername] = useState(() => {
     return "";
   })
@@ -31,6 +22,18 @@ function App() {
   const [userId, setUserId] = useState(() => {
     return "";
   })
+  useEffect(() => {
+    if(loggedIn===false){
+      axios.get("/login")
+        .then(response => {
+          setUsername(response.data.username)
+          setLoggedIn(response.data.loggedIn)
+          setUserId(response.data.userId)
+        })
+    }
+    
+
+  },[loggedIn])
   function setTheData(x,y,z){
     setUsername(x);
     setLoggedIn(y);
@@ -39,11 +42,11 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <Navbar uName = {username}/>
+      <Navbar uName = {username} dataSetter = { setTheData.bind(this)}/>
       <div className="content">
         <Switch>
           <Route exact path="/">
-            {loggedIn ? <Redirect to="/itemList" /> : <Home />}
+            {loggedIn ? <Redirect to={{pathname:"/itemList",state: {id: {userId}}}}/> : <Home />}
           </Route>
           <Route path="/test">
             <Test />
