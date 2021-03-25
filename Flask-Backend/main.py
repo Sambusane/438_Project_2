@@ -165,7 +165,6 @@ class Items(Resource):
         
 class Users(Resource):
     
-
     # this is the api endpoint for getting a user from the database
     def get(self, username):
         placer = mysql.get_db().cursor()
@@ -220,6 +219,7 @@ class Users(Resource):
         return data
 
 class Logout(Resource):
+    # this route logs the user out on the server side when they logout on the front end. 
     def get(self):
         session['loggedIn'] = False
         session['username'] = ""
