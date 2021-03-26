@@ -6,6 +6,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import ItemList from "./ItemList"
 import Search from "./Search"
+import AddItem from "./AddItem";
 import React, { useState, useEffect } from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Redirect } from "react-router-dom";
@@ -14,7 +15,8 @@ import Admin from './Admin';
 
 function App() {
   
-  const [username,setUsername] = useState(() => {
+  const [username,setUsername] = useState(() => 
+  {
     return "";
   })
   const [loggedIn, setLoggedIn] = useState(() => {
@@ -72,6 +74,10 @@ function App() {
           </Route>
           <Route path="/admin">
             <Admin />
+          </Route>
+          <Route path="/AddItem">
+            <AddItem 
+            id = {userId}/>
           </Route>
         </Switch>
       </div>

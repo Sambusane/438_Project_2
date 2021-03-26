@@ -1,0 +1,8 @@
+{
+    "cacheDirectories": [
+      "client/node_modules"
+    ],
+    "scripts": {
+      "heroku-postinstall": "cd wishlisht-frontend && yarn run build"
+    }
+}

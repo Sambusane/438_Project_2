@@ -1,0 +1,15 @@
+{
+    "cacheDirectories": [
+      "client/node_modules"
+    ],
+    "scripts": {
+      "heroku-postbuild": "cd wishlisht-frontend && yarn install && yarn start"
+    },
+        "name": "main-n",
+        "description": "wishlist",
+        "version": "1.0.0",
+        "engines": {
+          "node": "14.16.0",
+          "yarn:": "1.22.10"
+        }
+  }
