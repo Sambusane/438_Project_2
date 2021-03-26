@@ -12,6 +12,8 @@ api = Api(app)
 cors = CORS(app, resources ={r"/login/": {"origins": "*"}}) 
 cors = CORS(app, resource = {r"/signup/": {"origins": "*"}})
 
+
+
 class Search(Resource):
     def get(self,username):
         res = Users.get(self,username)
