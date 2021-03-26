@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css"
 import axios from "axios";
 import Item from "./item";
+import { Link } from "react-router-dom";
 
 axios.defaults.headers.post['Content-Type'] = "application/json"
 
@@ -84,7 +85,7 @@ class itemList extends React.Component{
                 })}
             </ul>
             <br></br>
-            <a className="addItemLinkButton" href="AddItem"> Add an Item </a>
+            <Link className="addItemLinkButton" to="/AddItem"> Add an Item </Link>
             </div>))
 
         )
