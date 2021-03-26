@@ -132,6 +132,7 @@ class Items(Resource):
         result = placer.execute(sql, [userID])
         if result > 0:
             data = placer.fetchall()
+            data.append({"msg":"success"})
         else : data = {
             "msg": "no items"
         }
@@ -225,6 +226,16 @@ class Logout(Resource):
         session['username'] = ""
         return {"msg":"success"}
 
+class User(Resource):
+    def get(self):
+        placer = mysql.get_db().cursor()
+        sql = ("SELECT * FROM users")
+        result = placer.execute(sql)
+        mysql.get_db().commit()
+        data = placer.fetchall()
+        placer.close()
+        return data
+
 # this is the route for the user things in the database the methods are defined in the class called Users above
 api.add_resource(Users, "/user/<string:username>")
 api.add_resource(Items, "/items/<int:userID>")
@@ -232,6 +243,7 @@ api.add_resource(Login, "/login")
 api.add_resource(Signup, "/signup")
 api.add_resource(Search, "/search/<string:username>")
 api.add_resource(Logout, "/logout")
+api.add_resource(User,"/users")
 
 # Confiq Mysql
 app.config["MYSQL_DATABASE_HOST"] = "phtfaw4p6a970uc0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
