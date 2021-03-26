@@ -177,14 +177,32 @@ input[type=submit]:hover {
   display: flex;
 }
 .items {
-  color: black;
-  align-content: center;
-  padding: 10px;
+  display: flex;
+  justify-content: center;
+  background-color: lightblue;
+  border-radius: 25px;
+  border: 1px solid #505050;
+  padding: 50px;
+  width: 325px;
+  height: 30%;
+  align-items: center;
+}
+
+.items h4{
+  margin-right:auto;
+}
+
+.items h5{
+  margin-right:auto;
+  margin-left: auto;
 }
 
 .itemLists{
   list-style-type: circle;
-  padding: 10px;
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
 .searchItem {
