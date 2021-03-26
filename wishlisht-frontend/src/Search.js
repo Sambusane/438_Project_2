@@ -25,6 +25,8 @@ class Search extends React.Component{
     handleChangeSearchname(event){
         this.setState({searchname: event.target.value})
     }
+
+    //this function searches the backend to see if a user has items in the database and displays them.
     async handleSubmit(event){
         event.preventDefault();
         const url = "/search/"+this.state.searchname;
@@ -40,10 +42,12 @@ class Search extends React.Component{
         
     }
 
+    // this fuction checks what is returned from the server.
     checkData() {
         
         if (JSON.stringify(this.state.data) === JSON.stringify(this.state.empty) ){
-            this.setState({items: ["user not found"],isEmpty: "true",message:"User Not found"})
+            this.setState({items: [],isEmpty: "true",message:"User Not found"})
+            alert("User not found")
 
         }else{
             this.setState({isEmpty: "false"})
@@ -52,6 +56,8 @@ class Search extends React.Component{
         
         
     }
+
+    // This function when clicked takes the user to the link provided and then deletes the item from the db
     async buyItem(url,id,uid){
         console.log(url)
         const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
@@ -76,9 +82,6 @@ class Search extends React.Component{
                 console.log(error)
             })
         
-        
-        
-
     }
 
 

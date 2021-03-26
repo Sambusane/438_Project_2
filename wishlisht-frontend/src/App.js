@@ -10,6 +10,7 @@ import React, { useState, useEffect } from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Redirect } from "react-router-dom";
 import axios from 'axios';
+import Admin from './Admin';
 
 function App() {
   
@@ -68,6 +69,9 @@ function App() {
           </Route>
           <Route path="/search">
             <Search />
+          </Route>
+          <Route path="/admin">
+            <Admin />
           </Route>
         </Switch>
       </div>
