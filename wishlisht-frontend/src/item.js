@@ -9,7 +9,7 @@ class item extends React.Component{
             name: this.props.name,
             price: this.props.price,
             image: this.props.image,
-            url : this.props.url
+            url : this.props.link
         }
     }
 
@@ -18,14 +18,11 @@ class item extends React.Component{
             <div className="items">
                 {this.state.name }
                 {this.state.price}
-                {/*<button onClick= href = "google.com">*/}
-                {/*    Click here*/}
-                {/*</button>*/}
-
                 <Link
-                href = "http://google.com/">
+                href = {this.state.link}>
                     Link
                 </Link>
+
             </div>
 
         )

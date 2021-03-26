@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css"
 import axios from "axios";
 import Item from "./item";
+import {Link} from "react-router-dom";
 
 axios.defaults.headers.post['Content-Type'] = "application/json"
 
@@ -51,19 +52,18 @@ class itemList extends React.Component{
     
 
     render() {
-        return(
-            
-            this.state.isLoading ?(
-                
-                <div>Loading...</div>
-            )
-            :(
-            <div className="itemLists"><ul>
-                {this.state.data.map(item => {
-                    return <li><Item key = {item.id} name = {item.itemName} price = {item.itemPrice}/></li>
-                })}
-            </ul>
-            </div>)
+        return (
+            this.state.isLoading ? (
+                    <div>Loading...</div>
+                )
+                : (
+                    <div className="itemLists">
+                        <ul>
+                            {this.state.data.map(item => {
+                                return <li><Item key={item.id} name={item.itemName} price={item.itemPrice} link={item.itemLink}/></li>
+                            })}
+                        </ul>
+                    </div>)
 
         )
     }
@@ -71,5 +71,6 @@ class itemList extends React.Component{
 }
 
 export default itemList;
+
 
 

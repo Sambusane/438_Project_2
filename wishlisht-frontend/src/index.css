@@ -178,11 +178,13 @@ input[type=submit]:hover {
 }
 .items {
   color: black;
+  align-content: center;
+  padding: 10px;
 }
 
 .itemLists{
   list-style-type: circle;
-  padding: 5px;
+  padding: 10px;
 }
 
 .searchItem {
