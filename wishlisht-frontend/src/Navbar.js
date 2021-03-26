@@ -19,7 +19,7 @@ class Navbar extends React.Component {
     async logout(event){
         event.preventDefault()
 
-        axios.get("/logout")
+        axios.get("api/logout")
             .then(res =>{
                 console.log(res)
                 this.state.dset("",false,"")

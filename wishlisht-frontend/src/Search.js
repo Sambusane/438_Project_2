@@ -29,7 +29,7 @@ class Search extends React.Component{
     //this function searches the backend to see if a user has items in the database and displays them.
     async handleSubmit(event){
         event.preventDefault();
-        const url = "/search/"+this.state.searchname;
+        const url = "api/search/"+this.state.searchname;
         this.forceUpdate()
         axios.get(url)
             .then(res =>{

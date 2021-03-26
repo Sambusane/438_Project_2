@@ -31,7 +31,7 @@ class Login extends React.Component {
     async handleSubmit(event){
         event.preventDefault();
 
-        const url = "/login"
+        const url = "api/login"
         let params = {
             username: this.state.username,
             password: this.state.password

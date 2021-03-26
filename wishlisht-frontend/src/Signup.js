@@ -41,7 +41,7 @@ class Signup extends React.Component {
         async handleSubmit(event) {
             event.preventDefault();
 
-            const url = "/signup"
+            const url = "api/signup"
             let params = {
                 username: this.state.username,
                 password: this.state.password,

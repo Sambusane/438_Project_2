@@ -24,7 +24,7 @@ class itemList extends React.Component{
     async componentDidMount(){
         if(this.state.isLoading===true){
             console.log("I mounted")
-            const url = "/items/" + this.props.id;
+            const url = "api/items/" + this.props.id;
             axios.get(url)
                 .then(response => {
                     if(response.data.msg===this.state.empty.msg){
@@ -47,7 +47,7 @@ class itemList extends React.Component{
     async componentDidUpdate(){
         if(this.state.isLoading===true){
             console.log("I mounted")
-            const url = "/items/" + this.props.id;
+            const url = "api/items/" + this.props.id;
             axios.get(url)
                 .then(response => {
                     if(response.data.msg===this.state.empty.msg){

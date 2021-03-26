@@ -41,7 +41,7 @@ class AddItem extends React.Component {
         async handleSubmit(event) {
             event.preventDefault();
 
-            const url = "/items/" + this.props.id;
+            const url = "api/items/" + this.props.id;
             let params = {
                 itemName: this.state.itemName,
                 itemPrice: this.state.itemPrice,
