@@ -177,11 +177,32 @@ input[type=submit]:hover {
   display: flex;
 }
 .items {
-  color: black;
+  display: flex;
+  justify-content: center;
+  background-color: lightblue;
+  border-radius: 25px;
+  border: 1px solid #505050;
+  padding: 50px;
+  width: 325px;
+  height: 30%;
+  align-items: center;
+}
+
+.items h4{
+  margin-right:auto;
+}
+
+.items h5{
+  margin-right:auto;
+  margin-left: auto;
 }
 
 .itemLists{
-
+  list-style-type: circle;
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
 .searchItem {
@@ -226,3 +247,24 @@ input[type=submit]:hover {
 
 }
 
+.admin {
+  height: 100vh;
+  background-image: url("https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-size: cover;
+  margin-bottom: 30px;
+}
+.admin h1{
+  color: white;
+}
+.users {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  
+}

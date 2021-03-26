@@ -5,13 +5,24 @@ class item extends React.Component{
         super(props);
         this.state = {
             name: this.props.name,
-            price: this.props.price
+            price: this.props.price,
+            image: this.props.image,
+            url : this.props.link
         }
     }
 
     render(){
         return(
-            <div className="items">{this.state.name }</div>
+            <div className="items">
+                <h4>{this.state.name }</h4>
+                <h5>Price = {this.state.price}</h5>
+                <button onClick={()=> {const newWindow = window.open(this.state.url, '_blank', 'noopener,noreferrer')
+                        if (newWindow) newWindow.opener = null}
+                }>Link</button>
+
+
+            </div>
+
         )
     }
 }
