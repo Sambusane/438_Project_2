@@ -41,7 +41,7 @@ class AddItem extends React.Component {
         async handleSubmit(event) {
             event.preventDefault();
 
-            const url = "/AddItem/" + this.props.id;
+            const url = "/items/" + this.props.id;
             let params = {
                 itemName: this.state.itemName,
                 itemPrice: this.state.itemPrice,
@@ -65,20 +65,20 @@ class AddItem extends React.Component {
             return (
                 <div className="addItem">
                     <div className="subAddItem">
-                        <h1> Add Item </h1>
+                        <h1> Add an Item </h1>
                         <br/>
                         <form onSubmit={this.handleSubmit}>
                             <p className="formTitle"> Item Name</p>
-                            <input type={"text"} placeholder={"itemname"} value={this.state.itemName} onChange={this.handleChangeItemName}/>
+                            <input type={"text"} placeholder={""} value={this.state.itemName} onChange={this.handleChangeItemName}/>
                             <br/> <br/>
                             <p className="formTitle"> Price</p>
-                            <input type={"text"} placeholder={"price"} value={this.state.itemPrice} onChange={this.handleChangeItemPrice}/>
+                            <input type={"text"} placeholder={""} value={this.state.itemPrice} onChange={this.handleChangeItemPrice}/>
                             <br/> <br/>
                             <p className="formTitle"> Item Description</p>
-                            <input type={"text"} placeholder={"itemDescription"} value={this.state.itemDescription} onChange={this.handleChangeItemDescription}/>
+                            <input type={"text"} placeholder={""} value={this.state.itemDescription} onChange={this.handleChangeItemDescription}/>
                             <br/> <br/>
                             <p className="formTitle"> Link</p>
-                            <input type={"text"} placeholder={"link"} value={this.state.itemLink} onChange={this.handleChangeItemLink}/>
+                            <input type={"text"} placeholder={""} value={this.state.itemLink} onChange={this.handleChangeItemLink}/>
                             <br/> <br/>
                             <input type={"submit"} value="Submit"/>
                         </form>

@@ -92,8 +92,8 @@ class Search extends React.Component{
                 <div className = "Searchform">
                     <h1>Please enter a username</h1>
                     <br></br>
-                    <input type={"text"} placeholder={"username"} value={this.state.searchname} onChange={this.handleChangeSearchname}/>
-                    <button onClick={this.handleSubmit}>Search</button>
+                    <input type={"text"} placeholder={""} value={this.state.searchname} onChange={this.handleChangeSearchname}/>
+                    <button className="searchButton" onClick={this.handleSubmit}>Search</button>
                     <br></br>
                 </div>
                 <div className = "Results">
