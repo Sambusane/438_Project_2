@@ -4,6 +4,7 @@ class item extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            filter: {"msg":"success"},
             name: this.props.name,
             price: this.props.price,
             image: this.props.image,
@@ -12,7 +13,11 @@ class item extends React.Component{
     }
 
     render(){
+        if(this.props.msg===this.state.filter.msg){
+            return <div></div>
+        }
         return(
+            
             <div className="items">
                 <h4>{this.state.name }</h4>
                 <h5>Price = {this.state.price}</h5>

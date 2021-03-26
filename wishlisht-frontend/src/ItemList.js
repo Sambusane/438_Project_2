@@ -80,7 +80,7 @@ class itemList extends React.Component{
             )
             :(<div className="itemLists"><ul>
                 {this.state.data.map(item => {
-                    return <li><Item key = {item.id} name = {item.itemName} price = {item.itemPrice} link = {item.itemLink}/></li>
+                    return <li><Item key = {item.id} msg={item.msg} name = {item.itemName} price = {item.itemPrice} link = {item.itemLink}/></li>
                 })}
             </ul>
             <br></br>

@@ -6,11 +6,15 @@ export class Searchitem extends Component {
         super(props)
     
         this.state = {
+            filter: {"msg":"success"},
             item: this.props.item
         }
     }
     
     render() {
+        if(this.state.item.msg===this.state.filter.msg){
+            return <div></div>
+        }
         return (
             <div className="searchItem">
                 <h4>{this.state.item.itemName}</h4>

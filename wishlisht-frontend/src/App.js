@@ -51,9 +51,6 @@ function App() {
           <Route exact path="/">
             {loggedIn ? <Redirect to={{pathname:"/itemList",state: {id: {userId}}}}/> : <Home />}
           </Route>
-          <Route path="/test">
-            <Test />
-          </Route>
           <Route path="/login">
             <Login
             name = {username}
