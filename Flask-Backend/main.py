@@ -241,13 +241,13 @@ class User(Resource):
         return data
 
 # this is the route for the user things in the database the methods are defined in the class called Users above
-api.add_resource(Users, "api/user/<string:username>")
-api.add_resource(Items, "api/items/<int:userID>")
-api.add_resource(Login, "api/login")
-api.add_resource(Signup, "api/signup")
-api.add_resource(Search, "api/search/<string:username>")
-api.add_resource(Logout, "api/logout")
-api.add_resource(User,"api/users")
+api.add_resource(Users, "/api/user/<string:username>")
+api.add_resource(Items, "/api/items/<int:userID>")
+api.add_resource(Login, "/api/login")
+api.add_resource(Signup, "/api/signup")
+api.add_resource(Search, "/api/search/<string:username>")
+api.add_resource(Logout, "/api/logout")
+api.add_resource(User,"/api/users")
 
 # Confiq Mysql
 app.config["MYSQL_DATABASE_HOST"] = "phtfaw4p6a970uc0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"

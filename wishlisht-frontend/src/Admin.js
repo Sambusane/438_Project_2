@@ -13,7 +13,7 @@ class Admin extends Component {
     }
 
     async componentDidMount(){
-        let url = "api/users"
+        let url = "/api/users"
         axios.get(url)
             .then(res => {
                 this.setState({users: res.data})
@@ -24,12 +24,12 @@ class Admin extends Component {
     }
 
     async deleteTheUser(username){
-        let url = "api/user/" + username
+        let url = "/api/user/" + username
         axios.delete(url)
             .then(res => {
                 console.log(res.data)
                 this.state.users.filter((user)=>user.username!==username)
-                axios.get("api/users")
+                axios.get("/api/users")
                     .then(res2 => {
                         this.setState({users: res2.data})
                     })
