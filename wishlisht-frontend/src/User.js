@@ -11,6 +11,7 @@ class User extends Component {
     
     render() {
         return (
+            
             <div className="searchItem">
                 <h4>{this.props.user.username}</h4>
                 <h5>Name: {this.props.user.firstname} {this.props.user.lastname}</h5>

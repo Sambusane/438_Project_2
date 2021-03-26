@@ -319,4 +319,7 @@ input[type=submit]:hover {
 .searchButton:hover {
   background-color: #307033;
 }
+.itemLists li{
+  list-style-type: none;
+}
 

@@ -38,7 +38,6 @@ class Navbar extends React.Component {
             <h1>Wish List</h1>
             <div className="links">
                 <Link to="/"> Home </Link>
-                <Link to="/test"> Test </Link>
                 <Link to="/search"> Search </Link>
                 {this.props.uName === "ADMIN" ? <Link to="/admin"> Admin </Link> : null }
                 {this.props.uName === "" ? (<a className="logout"> Please Log In </a>) : (<a className="logout" onClick={this.logout}>Log Out </a>)}
