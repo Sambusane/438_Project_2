@@ -6,13 +6,15 @@ from flask_cors import CORS, cross_origin
 import re
 
 mysql = MySQL()
-app = Flask(__name__)
+app = Flask(__name__, static_folder="../wishlisht-frontend/build",static_url_path='/')
 app.secret_key = 'this is the secret key'
 api = Api(app)
 cors = CORS(app, resources ={r"/login/": {"origins": "*"}}) 
 cors = CORS(app, resource = {r"/signup/": {"origins": "*"}})
 
-
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
 
 class Search(Resource):
     def get(self,username):
