@@ -83,6 +83,8 @@ class itemList extends React.Component{
                     return <li><Item key = {item.id} name = {item.itemName} price = {item.itemPrice} link = {item.itemLink}/></li>
                 })}
             </ul>
+            <br></br>
+            <a className="addItemLinkButton" href="AddItem"> Add an Item </a>
             </div>))
 
         )
