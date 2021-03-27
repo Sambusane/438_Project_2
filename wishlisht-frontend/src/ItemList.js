@@ -81,7 +81,12 @@ class itemList extends React.Component{
                 </div>
             )
             :(this.state.isEmpty ?(
-                <div>No Items</div>
+                <div>
+                    No Items in List
+                    <br></br>
+                    <Link className="addItemLinkButton" to="/AddItem"> Add an Item </Link>
+                </div>
+                
             )
             :(<div className="itemLists"><ul>
                 {this.state.data.map(item => {
