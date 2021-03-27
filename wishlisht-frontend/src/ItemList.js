@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css"
 import axios from "axios";
 import Item from "./item";
+import { Link } from "react-router-dom";
 
 axios.defaults.headers.post['Content-Type'] = "application/json"
 
@@ -24,7 +25,7 @@ class itemList extends React.Component{
     async componentDidMount(){
         if(this.state.isLoading===true){
             console.log("I mounted")
-            const url = "/items/" + this.props.id;
+            const url = "/api/items/" + this.props.id;
             axios.get(url)
                 .then(response => {
                     if(response.data.msg===this.state.empty.msg){
@@ -47,7 +48,7 @@ class itemList extends React.Component{
     async componentDidUpdate(){
         if(this.state.isLoading===true){
             console.log("I mounted")
-            const url = "/items/" + this.props.id;
+            const url = "/api/items/" + this.props.id;
             axios.get(url)
                 .then(response => {
                     if(response.data.msg===this.state.empty.msg){
@@ -73,7 +74,11 @@ class itemList extends React.Component{
             
             this.state.isLoading ?(
                 
-                <div>Loading...</div>
+                <div>
+                    Loading...
+                    <br></br>
+                    <Link className="addItemLinkButton" to="/AddItem"> Add an Item </Link>
+                </div>
             )
             :(this.state.isEmpty ?(
                 <div>No Items</div>
@@ -84,7 +89,7 @@ class itemList extends React.Component{
                 })}
             </ul>
             <br></br>
-            <a className="addItemLinkButton" href="AddItem"> Add an Item </a>
+            <Link className="addItemLinkButton" to="/AddItem"> Add an Item </Link>
             </div>))
 
         )

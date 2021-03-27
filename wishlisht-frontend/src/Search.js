@@ -29,7 +29,7 @@ class Search extends React.Component{
     //this function searches the backend to see if a user has items in the database and displays them.
     async handleSubmit(event){
         event.preventDefault();
-        const url = "/search/"+this.state.searchname;
+        const url = "/api/search/"+this.state.searchname;
         this.forceUpdate()
         axios.get(url)
             .then(res =>{
@@ -64,8 +64,8 @@ class Search extends React.Component{
         if (newWindow) newWindow.opener = null
         this.setState({items: this.state.items.filter((item)=>item.id!==id)})
         this.forceUpdate()
-        const url2 = "/items/"+id
-        const url3 = "/items/"+uid
+        const url2 = "/api/items/"+id
+        const url3 = "/api/items/"+uid
         axios.delete(url2)
             .then(response => {
                 console.log(response.data)

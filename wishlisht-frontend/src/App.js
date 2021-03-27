@@ -27,7 +27,7 @@ function App() {
   })
   useEffect(() => {
     if(loggedIn===false){
-      axios.get("/login")
+      axios.get("/api/login")
         .then(response => {
           setUsername(response.data.username)
           setLoggedIn(response.data.loggedIn)

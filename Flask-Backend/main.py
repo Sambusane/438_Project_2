@@ -6,11 +6,15 @@ from flask_cors import CORS, cross_origin
 import re
 
 mysql = MySQL()
-app = Flask(__name__)
+app = Flask(__name__, static_folder="../wishlisht-frontend/build",static_url_path='/')
 app.secret_key = 'this is the secret key'
 api = Api(app)
 cors = CORS(app, resources ={r"/login/": {"origins": "*"}}) 
 cors = CORS(app, resource = {r"/signup/": {"origins": "*"}})
+
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
 
 class Search(Resource):
     def get(self,username):
@@ -237,13 +241,13 @@ class User(Resource):
         return data
 
 # this is the route for the user things in the database the methods are defined in the class called Users above
-api.add_resource(Users, "/user/<string:username>")
-api.add_resource(Items, "/items/<int:userID>")
-api.add_resource(Login, "/login")
-api.add_resource(Signup, "/signup")
-api.add_resource(Search, "/search/<string:username>")
-api.add_resource(Logout, "/logout")
-api.add_resource(User,"/users")
+api.add_resource(Users, "/api/user/<string:username>")
+api.add_resource(Items, "/api/items/<int:userID>")
+api.add_resource(Login, "/api/login")
+api.add_resource(Signup, "/api/signup")
+api.add_resource(Search, "/api/search/<string:username>")
+api.add_resource(Logout, "/api/logout")
+api.add_resource(User,"/api/users")
 
 # Confiq Mysql
 app.config["MYSQL_DATABASE_HOST"] = "phtfaw4p6a970uc0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
