@@ -82,7 +82,7 @@ class itemList extends React.Component{
             )
             :(this.state.isEmpty ?(
                 <div>
-                    No Items
+                    No Items in List
                     <br></br>
                     <Link className="addItemLinkButton" to="/AddItem"> Add an Item </Link>
                 </div>
