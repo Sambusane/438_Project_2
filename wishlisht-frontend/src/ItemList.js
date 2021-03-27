@@ -74,7 +74,11 @@ class itemList extends React.Component{
             
             this.state.isLoading ?(
                 
-                <div>Loading...</div>
+                <div>
+                    Loading...
+                    <br></br>
+                    <Link className="addItemLinkButton" to="/AddItem"> Add an Item </Link>
+                </div>
             )
             :(this.state.isEmpty ?(
                 <div>No Items</div>
